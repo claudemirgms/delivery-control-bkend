@@ -3,6 +3,7 @@ const UserController = require('./app/controllers/UserController');
 const SessionController = require( './app/controllers/SessionController');
 const PackageController = require('./app/controllers/PackageController');
 const UnityController = require('./app/controllers/UnityController')
+const AddresseeController = require('./app/controllers/AddresseeController')
 
 const authMiddleware = require('./app/middlewares/auth')
 
@@ -16,5 +17,6 @@ routes.post('/create-package', PackageController.create_package);
 routes.get('/get-packages', PackageController.get_packages);
 routes.post('/deliver-package/:package_id', PackageController.deliver_package);
 routes.get('/get-unities', UnityController.get_unities);
+routes.post('/create-addressee', AddresseeController.create_addressee);
 
 module.exports = routes;

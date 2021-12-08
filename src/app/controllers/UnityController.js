@@ -15,10 +15,10 @@ module.exports = {
         const unities = await Unity.aggregate([           
             {
                 $lookup:{
-                    from: "senders",
+                    from: "addressees",
                     localField: "_id",
-                    foreignField: "unity",
-                    as: "senders"
+                    foreignField: "unity_id",
+                    as: "addressees"
                 }
             }
         ]);

@@ -2,6 +2,18 @@ const Package = require('../models/Package');
 
 module.exports = {
     async create_package(req, res){
+        console.log(req.body)
+        let findPackage = await Package.find({
+            unity_id: req.body.unity_id,
+            company: req.body.company,
+            package_cod: req.body.package_cod,
+            dateArrival: req.body.dateArrival
+        });
+        console.log(findPackage.length)
+        if(findPackage.length > 0){
+            return res.json({ error: 'Pacote já cadastrado' });
+        }
+
         const package = await Package.create(req.body);
         
         return res.json(package);

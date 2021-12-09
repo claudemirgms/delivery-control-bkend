@@ -12,7 +12,7 @@ const routes = express.Router();
 routes.post('/get-session', SessionController.get_session);
 routes.post('/create-user', UserController.create_user);
 routes.post('/create-unities', UnityController.create_unities);
-//routes.use(authMiddleware);
+routes.use(authMiddleware);
 routes.post('/create-package', PackageController.create_package);
 routes.get('/get-packages', PackageController.get_packages);
 routes.post('/deliver-package/:package_id', PackageController.deliver_package);

@@ -41,5 +41,12 @@ module.exports = {
             await package.save()
         }
         return res.json(package);
-    }        
+    },
+    async delete_package(req, res){
+        const { package_id } = req.params
+        console.log(package_id)        
+        await Package.deleteOne({_id: `${package_id}`});
+        
+        return res.send(200);
+    }                
 }

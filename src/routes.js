@@ -16,6 +16,7 @@ routes.post('/create-unities', UnityController.create_unities);
 routes.post('/create-package', PackageController.create_package);
 routes.get('/get-packages', PackageController.get_packages);
 routes.post('/deliver-package/:package_id', PackageController.deliver_package);
+routes.delete('/delete-package/:package_id', PackageController.delete_package);
 routes.get('/get-unities', UnityController.get_unities);
 routes.post('/create-addressee', AddresseeController.create_addressee);
 

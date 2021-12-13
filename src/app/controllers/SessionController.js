@@ -15,11 +15,12 @@ module.exports = {
     if (!(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ error: 'Password does not match' });
     }
-    const { id } = user;
+    const { id, unity_id } = user;
 
     return res.json({
       user: {
-          email
+          email,
+          unity_id
       },
       token: jwt.sign({ id }, process.env.APP_SECRET, {
         expiresIn: '7d',

@@ -1,3 +1,4 @@
+const { ObjectId }  = require('mongoose/lib/types');
 const Package = require('../models/Package');
 
 module.exports = {
@@ -20,6 +21,26 @@ module.exports = {
     },
     async get_packages(req, res){        
         const packages = await Package.aggregate([
+            {
+                $lookup:{
+                    from: "unities",
+                    localField: "unity_id",
+                    foreignField: "_id",
+                    as: "unity"
+                }
+            }
+        ]);
+        return res.json(packages);
+    },
+    async get_unity_packages(req, res){     
+        const { unity_id } = req.params;
+        
+        const packages = await Package.aggregate([
+            {
+                $match: {
+                    unity_id: ObjectId(`${unity_id}`)
+                }
+            },
             {
                 $lookup:{
                     from: "unities",
